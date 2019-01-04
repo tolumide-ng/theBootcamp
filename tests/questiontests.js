@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 
 //configure chai
-const express = chai.expect;
+const expect = chai.expect;
 chai.use(chaiHttp);
 chai.should();
 
