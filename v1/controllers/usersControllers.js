@@ -1,4 +1,4 @@
-import users from '../models/users';
+import users from '../models/usersControllers';
 
 const User = {
   /* we need to confirm that the email does
