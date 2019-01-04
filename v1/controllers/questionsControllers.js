@@ -38,7 +38,7 @@ const Questions = {
     }, 
 
     getAllQuestions(req, res) {
-        cons data = req.params.meetupId;
+        const data = req.params.meetupId;
         const allQuestions = questionsModels.getMeetupQuestions(data);
         const count = allquestions.length;
         if(count > 0) {
@@ -92,7 +92,7 @@ const Questions = {
             });
         }
         return res.status(404).json({
-            message: 'Not found';
+            message: 'Not found'
         });
     },
 
@@ -111,7 +111,7 @@ const Questions = {
             });
         }
         return res.status(404).json({
-            message: 'Not found';
+            message: 'Not found'
         });
     }
 }
