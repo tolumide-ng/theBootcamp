@@ -70,6 +70,7 @@ describe('Questions', () => {
                 .then(function (res) {
                     expect(res).to.have.status(404);
                 })
-                done();
+                done()
         })
     })
+});
