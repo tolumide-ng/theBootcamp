@@ -1,0 +1,44 @@
+{
+  "name": "thebootcamp",
+  "version": "1.0.0",
+  "description": "RESTful API with datastructures for storage",
+  "main": "server,js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tolumide-ng/theBootcamp.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "theBootcamp",
+    "Andela",
+    "API",
+    "RESTful"
+  ],
+  "author": "tolumide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tolumide-ng/theBootcamp/issues"
+  },
+  "homepage": "https://github.com/tolumide-ng/theBootcamp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "express": "^4.16.4",
+    "mocha": "^5.2.0",
+    "moment": "^2.23.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
