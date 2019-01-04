@@ -14,10 +14,10 @@ describe('Meetups', () => {
         topic: 'Stop breaking hearts'
     };
 
-    describe('#GET /v1/meetups', function(){
+    describe('#GET /v1/meetups/upcoming', function(){
         it('should return 404 if there are no meetups', function(done) {
             chai.request('http://localhost:3000')
-                .get('/v1/meetups')
+                .get('/v1/meetups/upcoming')
                 .then(function (res) {
                     expect(res).to.have.status(404);
                     done();
@@ -25,11 +25,10 @@ describe('Meetups', () => {
         })
     })
 
-    describe('#GET /v1/meetups/upcoming', function(){
-        it('should return 404 there are no upcoming meetups', function(done) {
+    describe('#GET /v1/meetups', function(){
+        it('should return 404 if there are no meetups', function(done) {
             chai.request('http://localhost:3000')
-                .get('/v1/meetups/upcoming')
-                .send({theLength: 0})
+                .get('/v1/meetups')
                 .then(function (res) {
                     expect(res).to.have.status(404);
                     done();
