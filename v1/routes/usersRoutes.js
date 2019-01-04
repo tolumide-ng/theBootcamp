@@ -5,7 +5,7 @@ const routes = (app) => {
     .get(users.userInfo);
 
   app.route('/v1/users/signup')
-    .post(users.signup);
+    .post(users.signUp);
 
   app.route('/v1/users/login')
     .post(users.login);
