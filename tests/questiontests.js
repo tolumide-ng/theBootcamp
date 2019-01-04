@@ -1,4 +1,4 @@
-/* import chai from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 
 //configure chai
@@ -21,8 +21,8 @@ describe('Questions', () => {
                 .send({data: fineboy})
                 .then(function (res) {
                     expect(res).to.have.status(400);
-                    done();
                 })
+                done();
         })
     })
 
@@ -33,8 +33,8 @@ describe('Questions', () => {
                 .send({theQuestion: fineboy})
                 .then(function (res) {
                     expect(res).to.have.status(404);
-                    done();
                 })
+                done();
         });
     });
 
@@ -45,8 +45,8 @@ describe('Questions', () => {
                 .send({theQuestion: fineboy})
                 .then(function (res) {
                     expect(res).to.have.status(404);
-                    done();
                 })
+                done();
         })
     })
 
@@ -56,9 +56,9 @@ describe('Questions', () => {
                 .get('/v1/questions/:meetupId')
                 .send({count: 0})
                 .then(function (res) {
-                    expect(res).to.have.status(204);
-                    done();
+                    expect(res).to.have.status(404);
                 })
+                done();
         })
     })
 
@@ -69,8 +69,7 @@ describe('Questions', () => {
                 .send({confirm: 1010})
                 .then(function (res) {
                     expect(res).to.have.status(404);
-                    done();
                 })
+                done();
         })
     })
-}) */
