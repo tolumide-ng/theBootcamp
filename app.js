@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import userRoutes from './api/v1/routes/userRoutes';
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+userRoutes(app);
 
 app.use((req, res, next) => {
   const error = new Error('Bad Request, Route not found');
