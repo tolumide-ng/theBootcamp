@@ -49,11 +49,7 @@ class Meetup {
 
   // returns all upcoming meetups
   upcomings() {
-    const len = this.meetups.filter(meetup => new Date(meetup.happeningOn) > new Date());
-    if(len.length === 0){
-      return 0;
-    }
-    return len;
+    return this.meetups.filter(meetup => new Date(meetup.happeningOn) > new Date());
   }
 
   // Admin has the right to edit a meetup posted

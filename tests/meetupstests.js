@@ -13,8 +13,9 @@ describe('Meetups', () => {
         location: 'Newark',
         topic: 'Stop breaking hearts'
     };
+
     describe('#GET /v1/meetups/upcoming', function(){
-        it('should return 404 there are no upcoming meetups', function(done) {
+        it('should return 404 if there are no meetups', function(done) {
             chai.request('http://localhost:3000')
                 .get('/v1/meetups/upcoming')
                 .then(function (res) {
