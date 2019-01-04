@@ -13,22 +13,21 @@ describe('Meetups', () => {
         location: 'Newark',
         topic: 'Stop breaking hearts'
     };
-    describe('#GET /v1/meetups', function(){
-        it('should return 404 when there are no meetups', function(done) {
-            chai.request('http://localhost:3000')
-                .get('v1/meetups')
-                .then(function(res) {
-                    expect(res).to.have.status(404);
-                    done();
-                })
-        });
-    });
-
     describe('#GET /v1/meetups/upcoming', function(){
         it('should return 404 there are no upcoming meetups', function(done) {
             chai.request('http://localhost:3000')
                 .get('/v1/meetups/upcoming')
-                .send({theLength: 0})
+                .then(function (res) {
+                    expect(res).to.have.status(404);
+                    done();
+                })
+        })
+    })
+
+    describe('#GET /v1/meetups', function(){
+        it('should return 404 if there are no meetups', function(done) {
+            chai.request('http://localhost:3000')
+                .get('/v1/meetups')
                 .then(function (res) {
                     expect(res).to.have.status(404);
                     done();
@@ -50,7 +49,7 @@ describe('Meetups', () => {
     describe('#POST /v1/meetups', function(){
         it('should return 422 if parameters are incomplete', function(done){
             chai.request('http://localhost:3000')
-                .get('/v1/meetups')
+                .post('/v1/meetups')
                 .send({data: fineboy})
                 .then(function (res) {
                     expect(res).to.has.status(422);

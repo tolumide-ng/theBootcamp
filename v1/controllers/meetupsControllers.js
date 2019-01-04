@@ -41,11 +41,9 @@ const Meetups = {
 
   findAll(req, res) {
     const allMeetups = meetupModel.getAll();
-    const count = allMeetups.length;
-    // check if there are meetups at all
-    if (count) {
+    if(allMeetups.length) {
       res.status(200).json({
-        Meetups: count,
+        Meetups: allMeetups.length,
         data: allMeetups.map(meetup => ({
           meetup: meetup.meetupId,
           topic: meetup.topic,
@@ -53,17 +51,16 @@ const Meetups = {
           happeningOn: meetup.happeningOn,
           tags: meetup.tags,
         })),
-      });
+      })
     }
-    res.status(404).json({
-      message: 'No content',
-    });
+    return res.status(404).json({
+      message: 'Meetups not found'
+    })
   },
 
   allUpcomings(req, res) {
     const upcomingMeetups = meetupModel.upcomings();
-    const theLength = upcomingMeetups.length;
-    if (theLength <= 0) {
+    if (upcomingMeetups === 0) {
       return res.json(404).json({
         message: 'Not found!',
       });

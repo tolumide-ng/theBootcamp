@@ -4,7 +4,7 @@
   "description": "RESTful API with datastructures for storage",
   "main": "server,js",
   "scripts": {
-    "test": "mocha --require babel-register tests/*.js ./server.js",
+    "test": "mocha --require babel-register tests/*.js ./server.js --timeout 10000",
     "start": "nodemon bin/dev",
     "clean": "rm -rf dist",
     "build": "npm run clean && mkdir dist && babel server -s -d dist", 
