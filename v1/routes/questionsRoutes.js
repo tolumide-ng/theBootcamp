@@ -1,4 +1,4 @@
-import questionControllers from '../controllers/questions';
+import questionControllers from '../controllers/questionsControllers';
 
 const routes = (app) => {
   app.route('/v1/questions')
