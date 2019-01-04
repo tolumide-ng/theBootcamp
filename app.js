@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import meetupsRoutes from './v1/routes/usersRoutes'
-import userRoutes from './v1/routes/usersRoutes';
+import meetupsRoutes from './v1/routes/meetupsRoutes'
+/* import userRoutes from './v1/routes/usersRoutes'; */
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 meetupsRoutes(app);
-userRoutes(app);
+/* userRoutes(app); */
 
 app.use((req, res, next) => {
   const error = new Error('Bad Request, Route not found');
