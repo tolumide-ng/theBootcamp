@@ -1,4 +1,4 @@
-import chai from 'chai';
+/* import chai from 'chai';
 import chaiHttp from 'chai-http';
 
 //configure chai
@@ -73,4 +73,4 @@ describe('Questions', () => {
                 })
         })
     })
-})
+}) */

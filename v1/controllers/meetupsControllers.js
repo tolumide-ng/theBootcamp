@@ -7,7 +7,7 @@ const Meetups = {
     const dateHappening = (new Date(data.happeningOn) > new Date());
     if (!data.topic && !data.location && !data.tags
             && !data.happeningOn && !dateHappening) {
-      return res.status(204).json({
+      return res.status(422).json({
         message: 'All fields are required',
       });
     }
@@ -25,7 +25,7 @@ const Meetups = {
     const params = req.params.meetupId;
     const theMeetup = meetupModel.getOne(params);
     if (!theMeetup) {
-      return res.status(204).json({
+      return res.status(404).json({
         message: 'Meetup Not Found',
       });
     }
@@ -55,7 +55,7 @@ const Meetups = {
         })),
       });
     }
-    res.status(204).json({
+    res.status(404).json({
       message: 'No content',
     });
   },
@@ -63,9 +63,9 @@ const Meetups = {
   allUpcomings(req, res) {
     const upcomingMeetups = meetupModel.upcomings();
     const theLength = upcomingMeetups.length;
-    if (theLength === 0) {
-      return res.json(204).json({
-        message: 'No upcoming meetup',
+    if (theLength <= 0) {
+      return res.json(404).json({
+        message: 'Not found!',
       });
     }
     return res.status(200).json({
@@ -81,16 +81,16 @@ const Meetups = {
   },
 
   deleteMeetup(req, res) {
-    // Is this a real Meetup
+    // Is this a real meetup?
     const confirm = meetupModel.getOne(req.body.meetupId);
     if (confirm) {
       meetupModel.delete(req.body.meetupId);
-      res.status(204).json({
+      res.status(200).json({
         message: 'Deleted',
       });
     }
-    res.status(404).json({
-      message: 'Meetup not found',
+    return res.status(404).json({
+      message: 'Meetup Not Found',
     });
   },
 
