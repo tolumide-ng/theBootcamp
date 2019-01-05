@@ -16,7 +16,7 @@
     "url": "git+https://github.com/tolumide-ng/theBootcamp.git"
   },
   "engines": {
-    "node": "10.x"
+    "node": "10.15.0"
   },
   "keywords": [
     "Nodejs",
