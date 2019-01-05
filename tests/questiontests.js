@@ -12,13 +12,13 @@ describe('Questions', () => {
         email: 'Yourba@demon',
         firstName: 'Newark',
         lastName: 'Stop',
-        password: '1234'
+        password: '1234',
+        questionId: 12345,
     };
     describe('#POST /v1/questions', function(){
         it('should return 400 if required fields are not filled', function(done) {
             chai.request('http://localhost:3000')
                 .post('/v1/questions')
-                .send({data: fineboy})
                 .then(function (res) {
                     expect(res).to.have.status(400);
                     done();
@@ -30,7 +30,7 @@ describe('Questions', () => {
         it('should return 404 if questionId does not exist', function(done) {
             chai.request('http://localhost:3000')
                 .patch('/v1/questions/:questionId/upvote')
-                .send({theQuestion: fineboy})
+                .send({data: fineboy.questionId})
                 .then(function (res) {
                     expect(res).to.have.status(404);
                     done();
@@ -42,7 +42,7 @@ describe('Questions', () => {
         it('should return 404 if questionId does not exist', function(done) {
             chai.request('http://localhost:3000')
                 .patch('/v1/questions/:questionId/downvote')
-                .send({theQuestion: fineboy})
+                .send({theQuestion: fineboy.questionId})
                 .then(function (res) {
                     expect(res).to.have.status(404);
                     done();
@@ -66,7 +66,7 @@ describe('Questions', () => {
         it('should return 404 if the question doesnt exist', function(done){
             chai.request('http://localhost:3000')
                 .del('/v1/questions/:questionId/delete')
-                .send({confirm: 1010})
+                .send({data: 1010})
                 .then(function (res) {
                     expect(res).to.have.status(404);
                     done();

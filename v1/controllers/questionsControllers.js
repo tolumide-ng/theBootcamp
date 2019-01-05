@@ -40,10 +40,10 @@ const Questions = {
     getAllQuestions(req, res) {
         const data = req.params.meetupId;
         const allQuestions = questionsModels.getMeetupQuestions(data);
-        const count = allquestions.length;
+        const count = allQuestions.length;
         if(count > 0) {
             return res.status(200).json({
-                data: allquestions.map(question => ({
+                data: allQuestions.map(question => ({
                     createdBy: question.createdBy,
                     meetupId: question.meetupId, 
                     title: question.title, 
@@ -56,29 +56,25 @@ const Questions = {
         return res.status(404).json({
             message: 'No questions for this meetup'
         })
-    }, 
+    },
 
     delete(req, res) {
-        const deleted = questionsModels.delete(req.params.questionId);
-        if(Array.isArray(deleted)) {
-            return res.status(202).json({
-                count: deleted.length,
-                data: deleted.map(undeleted => ({
-                    createdBy: undeleted.createdBy,
-                    meetupId: undeleted.meetupId,
-                    title: undeleted.title,
-                    body: undeleted.body,
-                    upvotes: undeleted.upvotes,
-                    downvotes: undeleted.downvotes,
-                  })),
+        //confirm if question exists
+        const data = req.params.questionId;
+        const confirm = questionsModels.forDel(data);
+        if(confirm) {
+            questionsModels.delete(data);
+            return res.status(200).json({
+                message: 'Question Deleted'
             });
         }
         return res.status(404).json({
-            message: 'Question not found',
-        });
+            message: 'Question not found!'
+        })
     },
 
     upvote(req, res) {
+        const data = req.params.questionId;
         const theQuestion = questionsModels.forDel(data.questionId);
         // does the user exist
         const theUser = usersModels.findUser(data.userId);
@@ -92,11 +88,12 @@ const Questions = {
             });
         }
         return res.status(404).json({
-            message: 'Not found'
+            message: 'Question with this ID Not found'
         });
     },
 
     downvote(req, res) {
+        const data = req.params.questionId;
         //does the question exist
         const theQuestion = questionsModels.forDel(data.questionId);
         // does the user exist
@@ -111,7 +108,7 @@ const Questions = {
             });
         }
         return res.status(404).json({
-            message: 'Not found'
+            message: 'Question with this ID Not found'
         });
     }
 }
