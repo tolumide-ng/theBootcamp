@@ -1,5 +1,5 @@
 import meetupModel from '../models/meetupsModels';
-import usersModel from './../models/usersModels';
+import usersModel from '../models/usersModels';
 
 const Meetups = {
   createMeetup(req, res) {
@@ -26,8 +26,8 @@ const Meetups = {
     const params = meetupModel.getOne(req.params.meetupId);
     const data = req.body;
     const userId = usersModel.findUser(data.userId);
-    const status = 'yes'||'no'||'maybe';
-    if(params && userId && status) {
+    const status = 'yes' || 'no' || 'maybe';
+    if (params && userId && status) {
       const attend = meetupModel.attend(data);
       attend;
       res.status(201).json({
@@ -36,12 +36,12 @@ const Meetups = {
           meetup: attend.meetupId,
           topic: attend.topic,
           status: attend.response,
-        }]
+        }],
       });
     }
     res.status(422).json({
-      message: "Unprocessable Entity: Confirm the supplied information"
-    })
+      message: 'Unprocessable Entity: Confirm the supplied information',
+    });
   },
 
   findOne(req, res) {
@@ -64,7 +64,7 @@ const Meetups = {
 
   findAll(req, res) {
     const allMeetups = meetupModel.getAll();
-    if(allMeetups.length) {
+    if (allMeetups.length) {
       res.status(200).json({
         Meetups: allMeetups.length,
         data: allMeetups.map(meetup => ({
@@ -74,16 +74,16 @@ const Meetups = {
           happeningOn: meetup.happeningOn,
           tags: meetup.tags,
         })),
-      })
+      });
     }
     return res.status(404).json({
-      message: 'Meetups not found'
-    })
+      message: 'Meetups not found',
+    });
   },
 
   allUpcomings(req, res) {
     const upcomingMeetups = meetupModel.upcomings();
-    if(upcomingMeetups.length) {
+    if (upcomingMeetups.length) {
       return res.status(200).json({
         count: upcomingMeetups.length,
         data: upcomingMeetups.map(upcomingMeetup => ({
@@ -93,11 +93,11 @@ const Meetups = {
           happeningOn: upcomingMeetup.happeningOn,
           tags: upcomingMeetup.tags,
         })),
-      })
+      });
     }
     return res.status(404).json({
-      message: 'No meetups found'
-    })
+      message: 'No meetups found',
+    });
   },
 
   deleteMeetup(req, res) {

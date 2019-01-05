@@ -1,6 +1,6 @@
 import moment from 'moment';
 import uuid from 'uuid';
-import users from './usersModels'
+import users from './usersModels';
 
 class Meetup {
   constructor() {
@@ -30,8 +30,8 @@ class Meetup {
       meetupId: meetup.meetupId,
       rsvpId: uuid.v4(),
       user: user.userId,
-      response: data.status
-    }
+      response: data.status,
+    };
     this.attending.push(rsvp);
     return rsvp;
   }
