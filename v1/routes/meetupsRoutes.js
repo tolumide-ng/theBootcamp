@@ -19,8 +19,8 @@ const routes = (app) => {
   app.route('/v1/meetups/delete')
     .delete(meetups.deleteMeetup);
 
-  /*   app.route('/v1/meetups/:meetupId/rsvps')
-    .post(reply); */
+  app.route('/v1/meetups/:meetupId/rsvps')
+    .post(meetups.rsvp);
 };
 
 export default routes;

@@ -77,7 +77,19 @@ describe('Meetups', () => {
                 .del('/v1/meetups/delete')
                 .send({confirm: 0})
                 .then(function (res) {
-                    expect(res).to.has.status(404);
+                    expect(res).to.have.status(404);
+                    done();
+                })
+        })
+    })
+
+    describe('#POST /v1/meetups/:meetupId/rsvps', function(){
+        it('should return 422 if any supplied information is incorrect', function(done) {
+            chai.request('http://localhost:3000')
+                .post('/v1/meetups/:meetupId/rsvps')
+                .send({data: fineboy})
+                .then(function (res) {
+                    expect(res).to.have.status(422);
                     done();
                 })
         })

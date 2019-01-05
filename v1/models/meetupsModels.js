@@ -1,5 +1,6 @@
 import moment from 'moment';
 import uuid from 'uuid';
+import users from './usersModels'
 
 class Meetup {
   constructor() {
@@ -23,14 +24,16 @@ class Meetup {
 
   // a small checkbox/button an interested attendee clicks to display interest
   attend(data) {
-    const attend = {
-      meetupId: data.meetupId,
-      userId: data.userId,
-      meetup: data.meetup,
-      user: data.user,
-    };
-    this.attending.push(attend);
-    return attend;
+    const user = users.findUser(data.userId);
+    const meetup = this.meetups.getOne(data.meetupId);
+    const rsvp = {
+      meetupId: meetup.meetupId,
+      rsvpId: uuid.v4(),
+      user: user.userId,
+      response: data.status
+    }
+    this.attending.push(rsvp);
+    return rsvp;
   }
 
   // returns a list of the people attending the meetup

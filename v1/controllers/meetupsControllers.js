@@ -1,4 +1,5 @@
 import meetupModel from '../models/meetupsModels';
+import usersModel from './../models/usersModels';
 
 const Meetups = {
   createMeetup(req, res) {
@@ -19,6 +20,28 @@ const Meetups = {
       tags: createdMeetup.tags,
       createdOn: createdMeetup.createdOn,
     });
+  },
+
+  rsvp(req, res) {
+    const params = meetupModel.getOne(req.params.meetupId);
+    const data = req.body;
+    const userId = usersModel.findUser(data.userId);
+    const status = 'yes'||'no'||'maybe';
+    if(params && userId && status) {
+      const attend = meetupModel.attend(data);
+      attend;
+      res.status(201).json({
+        status: 201,
+        data: [{
+          meetup: attend.meetupId,
+          topic: attend.topic,
+          status: attend.response,
+        }]
+      });
+    }
+    res.status(422).json({
+      message: "Unprocessable Entity: Confirm the supplied information"
+    })
   },
 
   findOne(req, res) {
@@ -118,8 +141,8 @@ const Meetups = {
           data: confirm.map(people => ({
             meetupId: people.meetupId,
             userId: people.userId,
-            meetup: people.meetup,
-            user: people.user,
+            title: people.title,
+            body: people.body,
           })),
         });
       }
