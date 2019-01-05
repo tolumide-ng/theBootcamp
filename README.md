@@ -6,3 +6,4 @@
 
 
 run eslint with: $ ./node_modules/.bin/eslint yourfile.js
+Use: heroku buildpacks:set heroku/nodejs if Heroku keeps detectinf a Rbuy for buildpacks
