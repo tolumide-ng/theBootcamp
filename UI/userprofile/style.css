@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+    --bk-1: #ffff;
+    --bk-2: #1b3049;
+    --bk-3: #255996;
+    --bk-4: #171f29;
+    --bk-5: rgba(100, 10, 250, .8);
+    --bk-6: #1fd030;
+    --bk-7: rgba(0, 0, 10, 0.6);
+    --bk-8: beige; 
+
+    --clr-dark: rgba(0,0,0,.25);
+    --clr-body: rgba(255,255,255,.8);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+}
+#userprofile {
+    display: grid;
+    grid-template-columns: 25% 60% 15%;
+    grid-template-rows: 0 1fr;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+}
+#profile {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: #e0f5ff;
+    padding: 20px;
+    margin: 0 20px;
+}
+.avi .img {
+    height: 150px;
+}
+#profile #box1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#box1 .na {
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    font-weight: 600;
+    padding: 10px;
+}
+#box1 #info{
+    display: flex;
+    color: BLUE;
+    font-weight: 700;
+    width: 100%;
+    justify-content: space-evenly;
+}
+#info #comments {
+    margin-left: 20px;
+}
+
+hr {
+    margin: 0;
+}
+#box2 { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#box2 .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 80%;
+}
+.contact .detail {
+    color: #2d2c2c;
+}
+.koko {
+    font-weight: 700;
+}
+
+/* SIDEBAR */
+#menu .avi .img {
+    height: 20px;
+}
+#sidebar {
+    grid-column: 1;
+    width: 100%;
+    grid-row: 2;
+    background: #e0f5ff;
+    grid-row: 2;
+}
+#menu {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    all: unset;
+}
+
+#sidebar li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.09em;
+}
+
+#sidebar li:hover {
+    color: yellow;
+}
+
+#homepage.avi.logo {
+    background: purple; 
+    margin-top: 0;
+}
+
+#homepage .img {
+    height: 50px;
+}
+
+
+
+#homepage.avi .img + * {
+    padding-left: 1em;
+}
+
+#homepage li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0;
+    color: white;
+    font-weight: 900;
+    letter-spacing: 0.2rem;
+}
+
+
+@media screen and (max-width: 900px) {
+    #userprofile {
+        display: grid;
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows: 1fr;
+    }
+    #sidebar {
+        display: none;
+    }
+}
