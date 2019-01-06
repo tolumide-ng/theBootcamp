@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="menu">
+        <p>PaPa<span>Africa</span></p>
+    </header>
+
+
+    <!-- side bar navigation -->
+
+    <div id="papa">
+
+        <header>
+            <nav id="navigation">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="/UI/Admin/index.html">Notes</a></li>
+                    <li><a href="/UI/Admin/CreatePosts/index.html">Create</a></li>
+                    <li><a href="/UI/Admin/Edit/index.html">Edit</a></li>
+                    <li><a href="/UI/Admin/Edit/index.html">Delete</a></li>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <div id="content">
+        <h1 class="postHeader">Create Posts</h1>
+        <form action="#" id="form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="data-input input" placeholder="Enter a title" name="title">
+            </div>
+
+            <div class="form-group">
+                <label for="file" class="form-label">File Upload</label>
+                <input type="file" class="data-input input" name="file">
+            </div>
+
+            <div class="form-group">
+                <label for="status" class="form-label" id="form-status-label">Status</label>
+                <select name="status" id="status" class="data-input">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                    <option value="draft">Draft</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="allowComments" class="allowComments">
+                    Allow Comments
+                    <input type="checkbox" name="allowComments" class="data-input" id="allowComments">
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="body" class="form-label">Post Body</label>
+                <textarea name="body" id="body" cols="150" rows="10" placeholder="Enter Description here"></textarea>
+            </div>
+
+            <button id="submit">Create Post</button>
+        </form>
+
+    </div>
+
+</body>
+</html>
